@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Language Translator</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Language Translator</h1>
+
+        <form method="POST">
+
+            <textarea
+                name="text"
+                placeholder="Enter text here..."
+                required>
+            </textarea>
+
+            <br>
+
+            <label>Source Language:</label>
+
+            <select name="source_language">
+
+                {% for code, language in languages.items() %}
+
+                    <option value="{{ code }}">
+                        {{ language }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+            <label>Target Language:</label>
+
+            <select name="target_language">
+
+                {% for code, language in languages.items() %}
+
+                    <option value="{{ code }}">
+                        {{ language }}
+                    </option>
+
+                {% endfor %}
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">
+                Translate
+            </button>
+
+        </form>
+
+        <h2>Translated Text:</h2>
+
+        <div class="output">
+            {{ translated_text }}
+        </div>
+
+    </div>
+
+</body>
+
+</html>
